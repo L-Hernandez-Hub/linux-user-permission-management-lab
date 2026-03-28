@@ -25,10 +25,7 @@ Pwd
 ```
 
 ```
-sudo groupadd HR
-```
-```
-sudo groupadd Sales
+sudo groupadd [group]
 ```
 
 ![Screenshot 1](1-whoami-sudo-groupadd.png)

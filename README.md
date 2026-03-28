@@ -87,7 +87,7 @@ sudo nano /shared/Hr/paystubs.txt
 cat /shared/Her/paystubs.txt
 ```
 
-![Screenshot 4](4- mkdir-touch-nano-cat-.png)
+![Screenshot 4](4-mkdir-touch-nano-cat.png)
 
 ---
 

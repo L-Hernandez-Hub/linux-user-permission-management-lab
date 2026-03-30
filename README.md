@@ -35,7 +35,7 @@ sudo groupadd [group]
 ### 2. Created Users
 Created users with a home directory using `useradd -m` and assigned Bash as their default shell using `-s /bin/bash` to allow interactive login and command execution. Assigned password to users using `passwd`. 
 
-**Command Used:*
+**Command Used:**
 ```
 sudo userdd -m -s /bin/bash [user]
 ```
@@ -65,7 +65,7 @@ id [user]
 ---
 
 ### 4. Created Shared Directory and Test File
-Created a shared directory using `mkdir` and added a sample file using `touch` and `nano` to write contents to simulate department data used for access control testing. Verified contents inside new file using `cat`.
+Created a shared directory using `mkdir` and created a sample file using `touch` and `nano` to write contents to simulate department data used for access control testing. Verified contents inside new file using `cat`.
 
 **Command Used:**
 ```
@@ -89,7 +89,7 @@ cat /shared/Her/paystubs.txt
 ---
 
 ### 5. Assigned Ownership and Directory Permissions
-Assigned ownership of the shared directory to the root user and HR group using `chown`, then configured permissions to allow access only to the owner and group while restricting all other users using `chmod`. Verified directory ownership and permissions using `ls -ld`, confirming the directory was assigned to root:HR with 770 permissions which grants full access. Attempted to list directory contents and received a permission denied error using ` ls -l`.
+Assigned ownership of the shared directory to the root user and HR group using `chown`, then configured permissions to 770, to allow access only to the owner and group while restricting all other users using `chmod`. Verified directory ownership and permissions using `ls -ld`. Attempted to list directory contents and received a permission denied error due to user `louanski` not containing proper permissions using ` ls -l`.
 
 **Command Used:**
 

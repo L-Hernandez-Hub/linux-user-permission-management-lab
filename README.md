@@ -113,4 +113,5 @@ ls -l /shared/HR
 
 ---
 
-### 6. 
+### 6. Tested Permissions
+

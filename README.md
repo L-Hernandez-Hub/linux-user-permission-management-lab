@@ -21,7 +21,7 @@ whoami
 ```
 
 ```
-Pwd
+pwd
 ```
 
 ```
@@ -33,15 +33,15 @@ sudo groupadd [group]
 ---
 
 ### 2. Created Users
-Created users with a home directory using `useradd -m` and assigned Bash as their default shell using `-s /bin/bash` to allow interactive login and command execution. Assigned password to users using `passwd`. 
+Created users with a home directory using `useradd -m` and assigned Bash as their default shell using `-s /bin/bash` to allow interactive login and command execution. Configured user authentication by setting passwords using `passwd`. 
 
 **Command Used:**
 ```
-sudo userdd -m -s /bin/bash [user]
+sudo useradd -m -s /bin/bash [user]
 ```
 
 ```
-sudo passwd [user] [password]
+sudo passwd [user]
 ```
 
 ![Screenshot 2](2-useradd-passwd.png)
@@ -69,19 +69,19 @@ Created a shared directory using `mkdir` and created a sample file using `touch`
 
 **Command Used:**
 ```
-sudo mkdir -p /shared/Hr
+sudo mkdir -p /shared/HR
 ```
 
 ```
-sudo touch /shared/Hr/paystubs.txt
+sudo touch /shared/HR/payroll.txt
 ```
 
 ```
-sudo nano /shared/Hr/paystubs.txt
+sudo nano /shared/HR/payroll.txt
 ```
 
 ```
-cat /shared/Her/paystubs.txt
+cat payroll.txt
 ```
 
 ![Screenshot 4](4-mkdir-touch-nano-cat.png)
@@ -89,7 +89,7 @@ cat /shared/Her/paystubs.txt
 ---
 
 ### 5. Assigned Ownership and Directory Permissions
-Assigned ownership of the shared directory to the root user and HR group using `chown`, then configured permissions to 770, to allow access only to the owner and group while restricting all other users using `chmod`. Verified directory ownership and permissions using `ls -ld`. Attempted to list directory contents and received a permission denied error due to user `louanski` not containing proper permissions using ` ls -l`.
+Assigned ownership of the shared directory to the root user and HR group using `chown`, then configured permissions to 770, to allow access only to the owner and group while restricting all other users using `chmod`. Verified directory ownership and permissions using `ls -ld`. Attempted to list directory contents using `ls -l` and received a permission denied error due to current user not being part of the assigned group, resulting in restricted access.
 
 **Command Used:**
 
@@ -113,5 +113,88 @@ ls -l /shared/HR
 
 ---
 
-### 6. Tested Permissions
+### 6. Tested Access with Authorized User
+Switched to user `Steve` using `su` and changed directory to `/shared/HR` using `cd`. Confirmed assigned access permission in the directory for the assigned group `HR` using `ls -l` granting access. 
+
+**Command Used:**
+```
+su - [user]
+```
+
+```
+cd /shared/HR
+```
+
+```
+ls -l 
+```
+
+```
+cat payroll.txt
+```
+
+![Screenshot 6](6-switched-users-confrimed-access.png)
+
+---
+
+### 7. Tested Access with Unauthorized User
+Switched to user `Mike` using `su` and changed directory to `/shared/HR` using `cd` and was denied access. Additionally, permission was denied for attempting to access shared folder. Mike is part of the Sales department and directly permission was set to 770, restricting access to owner and group only. Confirmed user group membership did not include HR using `id`
+
+
+**Command Used:**
+```
+su - [user]
+```
+
+```
+cd /shared/HR
+```
+
+```
+ls -l 
+```
+
+```
+id [user]
+```
+
+![Screenshot 7](7-unathorized-user.png)
+
+---
+
+### 8. Grant Temporary Access
+Temporarily added user Mike to the HR group using `sudo usermod` to grant access to the shared directory for testing and validation purposes. Applied the new group membership in current session using `newgrp`. Proceeded to confirm the new group and permissions and successfully granted temporary access.
+
+**Command Used:**
+```
+sudo usermod -aG [group] [user]
+```
+
+```
+newgrp [group]
+```
+
+```
+su - [User]
+```
+
+```
+id [user] 
+```
+
+```
+cd /shared/HR
+```
+
+```
+ls -l
+```
+
+```
+cat [file]
+```
+
+![Screenshot 8](8-temp-access.png)
+
+---
 

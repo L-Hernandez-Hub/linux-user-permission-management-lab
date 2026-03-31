@@ -1,7 +1,7 @@
 # Linux User & Permission Management
 
 ## Objective
-Simulate and troubleshoot a Linux file access issue where a user cannot access a shared department directory. Create users and groups, configure permissions, intentionally break access, then restore proper access using Linux ownership and permission commands.
+Demonstrate Linux user, group, and permission management by configuring a shared directory, controlling access with ownership and permissions, and validating access behavior across users.
 
 ---
 
@@ -28,6 +28,10 @@ pwd
 sudo groupadd [group]
 ```
 
+```
+getent [group]
+```
+
 ![Screenshot 1](1-whoami-sudo-groupadd.png)
 
 ---
@@ -49,7 +53,7 @@ sudo passwd [user]
 ---
 
 ### 3. Added Users to Groups
-Added the newly created users using `usermod` to newly create groups for role-based access and verified membership of the users using `id`.
+Added the newly created users using `usermod` to their designated group for role-based access and verified membership of the users using `id`.
 
 **Command Used:**
 ```
@@ -118,7 +122,7 @@ Switched to user `Steve` using `su` and changed directory to `/shared/HR` using 
 
 **Command Used:**
 ```
-su - [user]
+su - Steve
 ```
 
 ```
@@ -143,7 +147,7 @@ Switched to user `Mike` using `su` and changed directory to `/shared/HR` using `
 
 **Command Used:**
 ```
-su - [user]
+su - Mike
 ```
 
 ```
@@ -155,7 +159,7 @@ ls -l
 ```
 
 ```
-id [user]
+id Mike
 ```
 
 ![Screenshot 7](7-unathorized-user.png)
@@ -163,11 +167,11 @@ id [user]
 ---
 
 ### 8. Grant Temporary Access
-Temporarily added user Mike to the HR group using `sudo usermod` to grant access to the shared directory for testing and validation purposes. Applied the new group membership in current session using `newgrp`. Proceeded to confirm the new group and permissions and successfully granted temporary access.
+Temporarily added user Mike to the HR group using `sudo usermod` to grant access to the shared directory for testing and validation purposes. Applied updated group membership in current session using `newgrp`. User Mike was able to successfully access the shared directory and view file contents after being added to the correct group. 
 
 **Command Used:**
 ```
-sudo usermod -aG [group] [user]
+sudo usermod -aG HR Mike
 ```
 
 ```
@@ -191,10 +195,30 @@ ls -l
 ```
 
 ```
-cat [file]
+cat payroll.txt
 ```
 
 ![Screenshot 8](8-temp-access.png)
 
 ---
 
+### 9. Revoked Temporary Access 
+Removed user from the HR group using `sudo gpasswd` after testing to restore original access restrictions. User Mike is no longer able to access the shared directory after removal from the group. Access was denied, confirming permissions were correctly enforced.
+
+**Command Used:**
+
+```
+sudo gpasswd -d Mike HR
+```
+
+![Screenshot 9](9-restored-original-access.png)
+
+---
+
+## Key Takeaways
+- Created and managed Linux users and groups for role-based access control
+- Configured directory ownership and permissions using `chown` and `chmod`
+- Applied the principle of least privilege by restricting access to authorized users only
+- Troubleshot access issues by verifying group membership and permission settings
+- Demonstrated how Linux enforces access based on ownership and group association
+- Validated resolution by granting access, testing functionality, and restoring original restrictions

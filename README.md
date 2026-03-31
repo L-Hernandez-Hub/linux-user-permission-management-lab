@@ -142,7 +142,7 @@ cat payroll.txt
 ---
 
 ### 7. Tested Access with Unauthorized User
-Switched to user `Mike` using `su` and changed directory to `/shared/HR` using `cd` and was denied access. Additionally, permission was denied for attempting to access shared folder. Mike is part of the Sales department and directly permission was set to 770, restricting access to owner and group only. Confirmed user group membership did not include HR using `id`
+Switched to user Mike using `su` and attempted to access the shared directory `/shared/HR`. Access was denied due to permission restrictions. The directory was configured with 770 permissions, allowing access only to the owner and HR group members. Verified that Mike was not part of the HR group using the `id` command.
 
 
 **Command Used:**

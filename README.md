@@ -93,7 +93,7 @@ cat payroll.txt
 ---
 
 ### 5. Assigned Ownership and Directory Permissions
-Assigned ownership of the shared directory to the root user and HR group using `chown`, then configured permissions to 770, to allow access only to the owner and group while restricting all other users using `chmod`. Verified directory ownership and permissions using `ls -ld`. Attempted to list directory contents using `ls -l` and received a permission denied error due to current user not being part of the assigned group, resulting in restricted access.
+Assigned ownership of the shared directory to the root user and HR group using `chown`, then configured permissions to 770, to allow access only to the owner and group while restricting all other users using `chmod`. Verified directory ownership and permissions by using `ls -ld`. Attempted to list directory contents using `ls -l` and received a permission denied error due to current user not being part of the assigned group, resulting in restricted access.
 
 **Command Used:**
 

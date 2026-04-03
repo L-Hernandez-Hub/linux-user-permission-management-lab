@@ -32,7 +32,7 @@ sudo groupadd [group]
 getent [group]
 ```
 
-![Screenshot 1](1-whoami-sudo-groupadd.png)
+![Screenshot 1](Screenshots/1-whoami-sudo-groupadd.png)
 
 ---
 
@@ -48,7 +48,7 @@ sudo useradd -m -s /bin/bash [user]
 sudo passwd [user]
 ```
 
-![Screenshot 2](2-useradd-passwd.png)
+![Screenshot 2](Screenshots/2-useradd-passwd.png)
 
 ---
 
@@ -64,7 +64,7 @@ sudo usermod -aG [group] [user]
 id [user]
 ```
 
-![Screenshot 3](3-usermod-id.png)
+![Screenshot 3](Screenshots/3-usermod-id.png)
 
 ---
 
@@ -88,7 +88,7 @@ sudo nano /shared/HR/payroll.txt
 cat payroll.txt
 ```
 
-![Screenshot 4](4-mkdir-touch-nano-cat.png)
+![Screenshot 4](Screenshots/4-mkdir-touch-nano-cat.png)
 
 ---
 
@@ -113,7 +113,7 @@ ls -ld /shared/HR
 ls -l /shared/HR
 ```
 
-![Screenshot 5](5-chown-root-hr.jpeg)
+![Screenshot 5](Screenshots/5-chown-root-hr.jpeg)
 
 ---
 
@@ -137,7 +137,7 @@ ls -l
 cat payroll.txt
 ```
 
-![Screenshot 6](6-switched-users-confrimed-access.png)
+![Screenshot 6](Screenshots/6-switched-users-confrimed-access.png)
 
 ---
 
@@ -162,7 +162,7 @@ ls -l
 id Mike
 ```
 
-![Screenshot 7](7-unathorized-user.png)
+![Screenshot 7](Screenshots/7-unathorized-user.png)
 
 ---
 
@@ -198,7 +198,7 @@ ls -l
 cat payroll.txt
 ```
 
-![Screenshot 8](8-temp-access.png)
+![Screenshot 8](Screenshots/8-temp-access.png)
 
 ---
 
@@ -211,7 +211,7 @@ Removed user from the HR group using `sudo gpasswd` after testing to restore ori
 sudo gpasswd -d Mike HR
 ```
 
-![Screenshot 9](9-restored-original-access.png)
+![Screenshot 9](Screenshots/9-restored-original-access.png)
 
 ---
 
